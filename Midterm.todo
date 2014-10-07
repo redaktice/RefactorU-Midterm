@@ -1,15 +1,16 @@
 HTML:
-  ☐ Create basic framework/design
+  ✔ Create basic framework/design @done (14-10-07 11:23)
   ✔ Create login/home page @done (14-10-06 17:27)
-  ☐ Create fake (static) profile
+  ✔ Create fake (static) profile @done (14-10-07 11:23)
   ☐ Create fake-data page
   ☐ Refactor HTML to allow for dynamic page creation
 CSS:
-  ☐ Use Bootstrap to create initial page
+  ✔ Use Bootstrap to create initial page @done (14-10-07 11:23)
   ☐ Style page to be specific
   ☐ Refactor classes to keep generic for later customization
 JAVASCRIPT:
   ☐ Create base user class
+  ☐ 
 STORAGE:
   ☐ Learn normal local storage
   ☐ Explore jStorage

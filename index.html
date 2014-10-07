@@ -5,13 +5,17 @@
 	  <meta charset="utf-8">
 	  <title>SocialVibe</title>
 	  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+	  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	  <link rel="stylesheet" type="text/css" href="main.css">
+
 	</head>
-	<body class="main-page">
+		<body class="main-page">
+
 <div class="container">
 
+	<!-- NAVIGATION -->
 
-			<!-- NAVIGATION -->
+
 				<nav class="navbar navbar-default">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-section">
@@ -21,20 +25,21 @@
 						</button>
 						<a href="#" class="navbar-brand">My Media</a>
 					</div>
-
+				
 					<div class="collapse navbar-collapse" id="collapse-section">
 						<div class="centering">
 							<ul class="nav navbar-nav inline-block centered">
+							
 							<!-- Template -->
-								<li id="template" class="hidden"></li>
+								<li id="template" class="hidden media-circle-md"></li>
+					
+								<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
+								<li><i class="twitter media-circle-md fa fa-twitter "></i></li>
+								<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><button class="btn btn-circle"><h3 class="inline-block"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
+								<li><button class="btn btn-default btn-circle"><h3 class="inline-block no-mgn"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
 							</ul>
-
+				
 							<!-- Settings Button -->
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
@@ -51,43 +56,135 @@
 							</ul>
 						</div>
 					</div>
-			</nav>
+				</nav>
+			
 
 		
 
 
-			<!-- PROFILE -->
-			<div class="container profile">
-					<div class="user inline-block">
-						<img src="http://placehold.it/150x150" alt="" class="user-img img-circle">
-						<div class="user-info inline-block">
-							<h2 class="user-name">Name <small>Last</small></h2>
-							<h3 class="user-age">Age</h3>
-						</div>
-					</div>
+	<!-- PROFILE -->
 
-					<div class="media inline-block">
+			<div class="container profile">
+				<div class="user inline-block">
+					<img src="http://placehold.it/150x150" alt="" class="user-img img-circle">
+					<div class="user-info inline-block">
+						<h2 class="user-name">Name <small>Last</small></h2>
+						<h3 class="user-age">Age</h3>
+					</div>
+				</div>
+
+				<div class="media inline-block">
+					<ul class="list-unstyled list-inline text-right">
+						<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
+						<li><i class="twitter media-circle-md fa fa-twitter"></i></li>
+						<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
+						<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+						<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+					</ul>
+				</div>
+			</div>
+
+
+	<!-- FEED -->
+
+
+			<div class="container text-center">
+				<h2>FEED</h2>
+				<div class="media inline-block">
 						<ul class="list-unstyled list-inline text-right">
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><h3>ALL</h3></li>
+								<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
+								<li><i class="twitter media-circle-md fa fa-twitter"></i></li>
+								<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 						</ul>
 					</div>
+					<div class="box-center">
+						<div class="post">
+							<div class="post-head">
+								<div class="inline-block post-icons box-side-left">
+									<ul class="list-unstyled list-inline">
+									<!-- Template -->
+										<li id="template" class="media-circle-xs hidden"></li>
+										<li><i class="facebook media-circle-xs fa fa-facebook"></i></li>
+										<li><i class="twitter media-circle-xs fa fa-twitter "></i></li>
+										<li><i class="instagram media-circle-xs fa fa-instagram"></i></li>
+									</ul>
+								</div>
+								<div class="inline-block box-side-right">
+									Date
+								</div>
+							</div>
+							<div class="post-content">
+								<span><img class="img-circle" src="http://placehold.it/40x40" alt="">ME</span>
+									<p>This is a post. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis sequi voluptatum nesciunt, obcaecati ipsam eum fuga itaque nobis, esse sunt corporis dolores explicabo animi voluptates? Repellendus eos dicta labore.</p>
+							</div>
+						</div>
+					</div>
 			</div>
 
 
-			<!-- POSTS -->
+
+	<!-- FRIENDS -->
+			<aside class="">
+				<div class="box-side-right inline-block">
+
+					<div class="btn-group dropup">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<h3 class="inline-block"><span class="glyphicon glyphicon-cog"></span><span class="caret"></span></h3>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><img class="img-circle" src="http://placehold.it/40x40" alt="">Friend 1</li>
+							<li><img class="img-circle" src="http://placehold.it/40x40" alt="">Friend 2</li>
+							<li><img class="img-circle" src="http://placehold.it/40x40" alt="">Friend 3</li>
+							<li><img class="img-circle" src="http://placehold.it/40x40" alt="">Friend 4</li>
+						</ul>
+					</div>
+
+				</div>
+			</aside>
 
 
-			<div class="container text-center">
-				<div><h2>THIS IS THE FEED SECTION</h2></div>
-			</div>
-			<!-- FRIENDS -->
-			<aside></aside>
 
-			<!-- FOOTER -->
+	<!-- POST -->
+
+			<aside class="">
+				<div class="box-side-left inline-block">
+
+					<!-- Popup -->
+					<div class="btn-group dropup">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><h4 class="inline-block">Post<span class="caret"></span></h4></button>
+						<div class="dropdown-menu" role="menu">
+							<form action="form" class="post-form">
+								<div class="form-group">
+									<textarea name="post" id="" cols="30" rows="10" placeholder="Share your thoughts"></textarea>
+								</div>
+
+								<!-- Share icons -->
+								<div class="media inline-block">
+									<ul class="list-unstyled list-inline text-right">
+										<li><h3>ALL</h3></li>
+										<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
+										<li><i class="twitter media-circle-md fa fa-twitter"></i></li>
+										<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
+										<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+										<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+									</ul>
+								</div>
+
+								<!-- Submit -->
+								<div class="form-group">
+									<button type="button" class="btn btn-success vibe">Vibe</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</aside>
+
+	
+	<!-- FOOTER -->
 			<footer class="text-center">
 				<div class="page-header"></div>
 				<ul class="list-inline">
@@ -101,11 +198,13 @@
 
 
 
-		</div>
+
+</div> <!-- END OF BODY CONTAINER -->
+
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 		<script src="main.js"></script>
-</div>
+
 	</body>
 </html>
