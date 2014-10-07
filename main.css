@@ -1,0 +1,133 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+								/////////////////
+--------------------------------------GENERAL-------------------------------------
+								/////////////////
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+						ALIGNMENT
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/*Remove default float from bootstrap and ensure centering ability*/
+.centered {
+	float: none;
+}
+
+ /*Use to force inline-block*/
+.inline-block {
+	display:inline-block;
+}
+
+/*Set position to absolute*/
+.absolute {
+	position: absolute;
+}
+
+/*Set position to relative*/
+.relative {
+	position: relative;
+}
+
+/*Give side padding medium strength favoring the right*/
+.pad-md-right {
+	padding: 0 1.5em 0 1em;
+}
+
+/*Use on containers to align the child elements*/
+.centering {
+	text-align: center;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+									LOGIN
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/*---------------------------------CENTER LOGIN---------------------------------*/
+
+.login-form {
+	background-color: rgba(100, 200, 100, .4); 
+	border-radius: 10px;
+	border: 5px solid #EEF;
+	padding: 2em;
+
+}
+
+
+.form-container {
+	z-index: 10;
+	width: 100%;
+	top: 30%;
+}
+/*-----------------------------------CAROUSEL-----------------------------------*/
+
+
+/*Set a fixed height for the carousel and its contained elements*/
+	.carousel.slide {
+		height: 600px;
+	}
+
+	.carousel-inner {
+		height: 100%;
+	}
+
+	.item {
+		height: 100%;
+	}
+
+
+
+.carousel-item-1 .color {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(150, 150, 150, .2);
+}
+
+.carousel-item-1 {
+	background-image: url("http://placehold.it/250x250");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.carousel-item-2 .color {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(50, 90, 150, .2);
+}
+
+.carousel-item-2 {
+	background-image: url("http://placehold.it/250x250");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.carousel-item-3 .color {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(50, 150, 50, .2);
+}
+
+.carousel-item-3 {
+	background-image: url("http://placehold.it/250x250");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.carousel-item-4 .color {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(150, 50, 50, .2);
+}
+.carousel-item-4 {
+	background-image: url("http://placehold.it/250x250");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
