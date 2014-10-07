@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,8 +7,8 @@
 	  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 	  <link rel="stylesheet" type="text/css" href="main.css">
 	</head>
-	<body>
-		<div class="container">
+	<body class="main-page">
+<div class="container">
 
 
 			<!-- NAVIGATION -->
@@ -25,26 +26,64 @@
 						<div class="centering">
 							<ul class="nav navbar-nav inline-block centered">
 							<!-- Template -->
-								<li id="template" class="hidden">
+								<li id="template" class="hidden"></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><button class="btn btn-circle"><h3 class="inline-block"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
+							</ul>
 
-								<li><h3>⚙</h3></li>
+							<!-- Settings Button -->
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<h3 class="inline-block"><span class="glyphicon glyphicon-cog"></span><span class="caret"></span></h3>
+									</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Settings</a></li>
+										<li><a href="#">Privacy</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Log Out</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 					</div>
-				</div>
 			</nav>
-					<h3>⚙</h3>
-				</nav>
+
+		
+
+
 			<!-- PROFILE -->
+			<div class="container profile">
+					<div class="user inline-block">
+						<img src="http://placehold.it/150x150" alt="" class="user-img img-circle">
+						<div class="user-info inline-block">
+							<h2 class="user-name">Name <small>Last</small></h2>
+							<h3 class="user-age">Age</h3>
+						</div>
+					</div>
+
+					<div class="media inline-block">
+						<ul class="list-unstyled list-inline text-right">
+								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+						</ul>
+					</div>
+			</div>
 
 
 			<!-- POSTS -->
 
+
+			<div class="container text-center">
+				<div><h2>THIS IS THE FEED SECTION</h2></div>
+			</div>
 			<!-- FRIENDS -->
 			<aside></aside>
 
@@ -67,8 +106,6 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
 		<script src="main.js"></script>
-
+</div>
 	</body>
 </html>
-
-
