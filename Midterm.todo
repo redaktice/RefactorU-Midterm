@@ -9,8 +9,8 @@ CSS:
   ☐ Style page to be specific
   ☐ Refactor classes to keep generic for later customization
 JAVASCRIPT:
-  ☐ Create base user class
-  ☐ 
+  ✔ Create base user class @done (14-10-07 14:11)
+  ☐ Create login method and store user info
 STORAGE:
   ☐ Learn normal local storage
   ☐ Explore jStorage

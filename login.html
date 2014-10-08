@@ -41,28 +41,86 @@
 	
 			<div class="relative centering">
 
-				<!-- LOGIN -->
-					<div class="absolute form-container">
+		<!-- LOGIN -->
+
+
+					<!-- login -->
+					<div class="absolute form-container form-container-avg">
 						<div class="inline-block centering">
-								
-							<form action="form" class="login-form">
-								<div class="form-group">
-									<input type="username" placeholder="Username">
+						
+							<form action="form" class="center-form form">
+								<div class="hidden failed-login">
+									<p class="bg-danger">No matching username/password</p>
+									<p class="bg-danger">Try again or create account</p>
 								</div>
 								<div class="form-group">
-									<input type="password" placeholder="Password">
+									<input class="input-username" type="username" placeholder="Username">
+								</div>
+								<div class="form-group">
+									<input class="input-password" type="password" placeholder="Password">
 								</div>
 								<div class="form-group container-fluid">
-									<button class="btn btn-primary btn-lg">Login</button><button class="btn btn-success btn-sm">Sign Up!</button>
+									<button id="login" class="btn btn-primary btn-lg">Login</button>
+									<button id="sign-up" class="btn btn-success btn-sm">Sign Up!</button>
 								</div>
 								<div class="form-group container-fluid">
-									<button class="btn btn-info btn-sm">Terms of use</button>
+									<button class="terms-of-use btn btn-info btn-xs">Terms of use</button>
 								</div>
 							</form>
-										
 						</div>
 					</div>
-				
+									
+					<!-- creeate account -->
+					<div class="absolute form-container form-container-tall">
+						<div class="inline-block centering form-container-wide">
+							<form action="form" class="center-form form-wide">
+								<div class="signup-prompt">
+									<p class="bg-success">Welcome!</p>
+									<p class="bg-success">Please complete</p>
+								</div>
+								<div class="hidden failed-signup">
+									<p class="bg-danger">Uh oh, please try again</p>
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-firstname" type="text" placeholder="First Name">
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-lastname" type="text" placeholder="Last Name">
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-age" type="text" placeholder="Age">
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-email" type="email" placeholder="example@beingawesome.com">
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-username" type="username" placeholder="Username">
+								</div>
+
+								<div class="form-group">
+									<input class="centering input-password" type="password" placeholder="Password: At leaset 8 characters">
+								</div>
+								<div class="form-group container-fluid">
+									<button id="create" class="btn btn-success btn-lg">Create!</button>
+								</div>
+
+								<div class="form-group container-fluid">
+									<button class="terms-of-use btn btn-info btn-xs">Terms of use</button>
+								</div>
+							</form>
+											
+										
+
+
+						</div>
+					</div>
+
+		
 
 			<!-- CAROUSEL -->
 				<div id="login-page" class="carousel slide" data-ride="carousel">
@@ -70,8 +128,6 @@
 				
 						<!-- Carousel Item -->
 						<div class="item active carousel-item-1">
-
-							<!-- <img src="http://placehold.it/250x250" alt="" class=""> -->
 							<div class="carousel-caption">
 								<h2>Organize Your Life!</h2>
 							</div>
@@ -80,7 +136,6 @@
 
 						<!-- Carousel Item -->
 						<div class="item carousel-item-2">
-							<!-- <img src="http://placehold.it/250x250" alt="" class=""> -->
 							<div class="carousel-caption">
 								<h2>Connect With The World!</h2>
 							</div>
@@ -89,7 +144,6 @@
 				
 						<!-- Carousel Item -->
 						<div class="item carousel-item-3">
-							<!-- <img src="http://placehold.it/250x250" alt="" class=""> -->
 							<div class="carousel-caption">
 								<h2>Manage Digital Life!</h2>
 							</div>
@@ -98,7 +152,6 @@
 				
 						<!-- Carousel Item -->
 						<div class="item carousel-item-4">
-							<!-- <img src="http://placehold.it/250x250" alt="" class=""> -->
 							<div class="carousel-caption">
 								<h2>Increase Your Presence!</h2>
 							</div>
@@ -136,7 +189,8 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-		<!-- <script src="main.js"></script> -->
+		<script src="app.js"></script>
+		<script src="admin.js"></script>
 
 	</body>
 </html>

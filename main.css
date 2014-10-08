@@ -4,7 +4,9 @@
 						/////////////////
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-
+.hidden {
+	display: none;
+}
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					ALIGNMENT
@@ -56,7 +58,6 @@
 .no-mgn {
 	margin: 0;
 }
-
 
 
 
@@ -167,23 +168,39 @@
 
 /*----------------------CENTER LOGIN--------------------------*/
 
-.login-form {
-	background-color: rgba(100, 200, 100, .4); 
+.center-form {
+	background-color: rgba(100, 200, 100, .35); 
 	border-radius: 10px;
 	border: 5px solid #EEF;
 	padding: 2em;
 
 }
 
-
 .form-container {
 	z-index: 10;
 	width: 100%;
-	top: 30%;
+}
+
+.form-container-avg {
+	top: 25%;
 }
 
 
 
+/*_________________NEW USER_______________*/
+
+.form-container-tall {
+	top: 5%;
+}
+
+.form-container-wide {
+	width: 40%;
+}
+
+/*Create a wider input area*/
+.form-wide input {
+	width: 55%;
+}
 /*--------------------------CAROUSEL-------------------------*/
 
 
