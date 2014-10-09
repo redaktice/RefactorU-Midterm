@@ -165,8 +165,19 @@ var allUsers = usersArrayString.map(function(objectLiteral) {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
+var postToDOM = function (time, author) {
+	var renderedPost = $('#template-post').clone();
 
+	renderedPost.attr('id', '');
+	renderedPost.find('.date').text(time);
+	renderedPost.find('.post-author').text(author);
+	renderedPost.removeClass('template');
+console.log("rendered", renderedPost);
 
+	// savePosts();
+
+	return (renderedPost);
+};
 
 /*--------------CONSTRUCTOR-----------------*/
 
@@ -206,17 +217,6 @@ var Post = function (postTime, author, content, facebook, twitter, instagram, ta
 
 
 
-/*----------------METHODS-------------------*/
-
-Post.prototype.renderPost = function () {
-
-	var newPost = $('#template-post').clone();
-
-	newPost.attr('id', '');
-	newPost.find('.date').text(this.postTime);
-	newPost.find('.post-author').text(this.postAuthor);
-};
-
 
 
 var postsArrayString = JSON.parse(localStorage.getItem('allPosts')) || [];
@@ -224,5 +224,4 @@ var postsArrayString = JSON.parse(localStorage.getItem('allPosts')) || [];
 var postsArray = postsArrayString.map(function(objectLiteral) {
 	return new Post (objectLiteral);
 });
-
 

@@ -42,17 +42,9 @@ var createUser = function (userObject) {
 
 		var confirmedUser = _.find(allUsers, function (userObject) {
 
-console.log("confirming", inputUsername);
-console.log("confirming", inputPassword);
-
-console.log(userObject);
-console.log("allUsers", allUsers);
-
-
 console.log("User found");
 console.log(userObject.username,  inputUsername);
 			return ((userObject.username === inputUsername) && (userObject.password === inputPassword));
-
 		});
 
 console.log("confirmedUser", confirmedUser);
@@ -77,12 +69,9 @@ console.log("confirmedUser", confirmedUser);
 	 */
 	var makeNewUser = function (tempUser) {
 		var newUser = new User(tempUser.firstName, tempUser.lastName, tempUser.email, tempUser.color, tempUser.age, tempUser.img, tempUser.bool, tempUser.username, tempUser.password);
-		createUser(newUser);
-
-console.log("New User", newUser);
-
-				
+		createUser(newUser);	
 		saveUsers();
+								console.log("New User", newUser);
 	};
 
 
@@ -93,20 +82,13 @@ console.log("New User", newUser);
 	 * @return {Boolean}          [Returns a check of the completed form and throws an error if incomplete]
 	 */
 	var checkCreateComplete = function (tempUser) {
-
-console.log(tempUser);
-
-console.log(tempUser.password);
-
-			if (tempUser.password.length < 8) {
-				$('.failed-signup').removeClass('absent');
-
-console.log("UserCreated", false);
-					return false;
-			}
-			else {
-				return true;
-			}
+		if (tempUser.password.length < 8) {
+			$('.failed-signup').removeClass('absent');
+				return false;
+		}
+		else {
+			return true;
+		}
 	};
 
 
@@ -153,7 +135,6 @@ console.log("UserCreated", false);
 		var inputUsername = $('#new-user .input-username').val();
 		var inputPassword = $('#new-user .input-password').val();
 
-console.log("username", inputUsername);
 
 		// Create a temporary object to store information for checks
 		var tempUser = {
@@ -168,19 +149,15 @@ console.log("username", inputUsername);
 			password: inputPassword
 		};
 
-console.log("checkCreateComplete", checkCreateComplete(tempUser));
 
 		// Navigate to home page upon completion
 		if (checkCreateComplete(tempUser)) {
 			makeNewUser(tempUser);
 			window.location.href='file:///Users/student/projects/week5/midterm-project/index.html?userId=' + (allUsers.length-1);
-
-console.log("All Users", allUsers);
-console.log("UserCreated", true);
+console.log("Successfully created new user");
 		}
 
 	});
-
 
 
 

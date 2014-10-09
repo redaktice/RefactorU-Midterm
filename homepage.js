@@ -3,10 +3,98 @@
 $(document).on('ready', function() {
 
 
+/*----------------------------GLOBAL VARIABLES----------------------------*/
+	var postArea = $("#new-post");
+
+
+/*----------------------------INITIALIZATION FUNCTIONS----------------------------*/
+
+	/**
+	 * CREATE DOME VALUES FOR POST
+	 * @param  {Object} postObject Instance of a Post
+	 * @return {DOM}            DOM elements with values for the Post instance
+	 */
+	var postToDOM = function (postObject) {
+
+		
+		/**
+		 * HELPER FUNCTION CREATES DOM ELEMENTS FOR SMALL MEDIA ICONS
+		 * @param  {String} media Media name
+		 * @return {DOM}       Items specific to Media
+		 */
+		var makeMediaIndicator = function (media) {
+			var mediaIndicator = $('#icon-template').clone();
+			mediaIndicator.attr('id', '');
+			mediaIndicator.removeClass('template');
+			mediaIndicator.find('i').addClass(media + ' fa-' + media);
+
+			return mediaIndicator;
+		};
+
+			var postDOMElement = $('#template.template-post').clone();
+
+			var postMedia = postDOMElement.find('.media-list');
+
+
+			postDOMElement.attr('id', '');
+			postDOMElement.find('.date').text(postObject.postTime);
+			postDOMElement.find('.post-author').text(postObject.postAuthor);
+			postDOMElement.find('.post-text').text(postObject.content);
+
+
+			if (postObject.facebook) {
+				postMedia.append(makeMediaIndicator('facebook'));
+			}
+			if (postObject.twitter) {
+				postMedia.append(makeMediaIndicator('twitter'));
+			}
+			if (postObject.instagram) {
+				postMedia.append(makeMediaIndicator('instagram'));
+			}
+
+
+			if (!(postObject.facebook && postObject.twitter && postObject.instagram)) {
+				postMedia.find('.add-media-xs').attr('id', '');
+			}
+
+// console.log("Media Icon:", mediaIconXS());
+
+			postDOMElement.removeClass('template');
+
+			return (postDOMElement);
+	};
+
+
+
+
+	/**
+	 * RENDER THE FEED ON THE PAGE
+	 * @return {DOM} Updated feed section
+	 */
+	var renderFeed = function () {
+
+		var feed = $('#feed');
+		feed.empty();
+
+		var renderedPostsArray = postsArray.map(function (postObject) {
+			feed.prepend(postToDOM(postObject));
+		});
+	};
+
+	renderFeed();
+
+
+
 /*----------------------------FUNCTIONS----------------------------*/
 
 
-	/*FROM STACKOVERFLOW*/
+
+
+	/** FROM STACKOVERFLOW	
+	 * LOAD PAGE FOR PARTICULAR USER
+	 * @param  {URL string} name From the URL
+	 * @return {String}      Unique User ID
+	 */
 	var getParameterByName = function (name) {
 
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -15,10 +103,12 @@ $(document).on('ready', function() {
 	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	};
 
+
+
 	/**
-	 * [createUserPage description]
-	 * @param  {[type]} currentUser [description]
-	 * @return {[type]}             [description]
+	 * [CHANGES DOM VALUES FOR THE PROFILE]
+	 * @param  {[Object]} currentUser [Instance of User]
+	 * @return {[DOM]}             [DOM values to create unique profile]
 	 */
 	var createUserPage = function(currentUser) {
 
@@ -26,27 +116,8 @@ $(document).on('ready', function() {
 		$('.user-firstName').text(currentUser.firstName + " ");
 		$('.user-lastName').text(currentUser.lastName);
 		$('.user-age').text('(' + currentUser.age + ')');
-
-console.log("create page");
 	};
 
-var postArea = $("#new-post");
-
-var renderFeed = function () {
-
-	var feed = $('#feed');
-	feed.empty();
-
-
-console.log('postsArray', postsArray);
-// console.log
-	var rendederedPostsArray = postsArray.map(function (postObject) {
-
-		return postObject.renderPost;
-	});
-
-	feed.append($(rendederedPostsArray));
-};
 
 	/**
 	 * User object
@@ -56,25 +127,60 @@ console.log('postsArray', postsArray);
 	createUserPage(currentUser);
 
 
+
+
+
+
+/*----------------------------FUNCTIONS----------------------------*/
+
+
+	/**
+	 * ADDS NEW POSTS TO POSTSARRAY
+	 * @param  {Object} postObject instance of Post
+	 * @return {Array}            postsArray
+	 */
+	var pushPostsArray = function (postObject) {
+		postsArray.push(postObject);
+	};
+
+
+	/**
+	 * CREATE INSTANCE OF POST
+	 * @param  {Object} tempPost temporary object for holding Post values
+	 * @return {Object}          Push new instance of Post to postsArray
+	 */
+	var makeNewPost = function (tempPost) {
+		var newPost = new Post(tempPost.postTime, tempPost.author, tempPost.content, tempPost.facebook, tempPost.twitter, tempPost.instagram, tempPost.tags, tempPost.image, tempPost.isPublic);
+		pushPostsArray(newPost);
+	};
+
+
+
+	/**
+	 * DETERMINE WHAT MEDIA WAS CHECKED WHEN CREATING POST
+	 * @param  {DOM} media Media icon object that were selected
+	 * @return {Boolean}       If the Media icon was checked
+	 */
+	var checkMedia = function (media) {
+
+		if ($('.to-media' + media).hasClass('highlight')) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	};
+
+
+
 /*----------------------------EVENTS----------------------------*/
 	
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					NEW POSTS
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-	
-	var tempPost = {
-		postTime: null,
-		author: null,
-		postAuthor: null,
-		content: null,
-		color: null,
-		facebook: false,
-		twitter: false,
-		instagram: false,
-		tags: [],
-		image: null,
-		isPublic: false
-	};
+
+
+
 
 	/**
 	 * KEEP DROPUP OPEN
@@ -83,6 +189,7 @@ console.log('postsArray', postsArray);
 	 */
 	$('#post-menu').on('click', function(e) {
 		e.stopPropagation();
+		// savePosts();
 	});
 
 
@@ -96,17 +203,14 @@ console.log('postsArray', postsArray);
 	// 	postArea.focus();
 	// });
 
-	var checkMedia = function (media) {
 
-		if ($('.to-media' + media).hasClass('highlight')) {
-		return true;
-		}
 
-		else {
-			return false;
-		}
-	};
 
+	/**
+	 * CREATES A POST
+	 * @param  {[Event]} e default
+	 * @return {DOM}   Posts to Feed and social media
+	 */
 	$('.vibe').on('click', function(e) {
 
 		var currentTime = new Date();
@@ -115,32 +219,37 @@ console.log('postsArray', postsArray);
 
 		var tags = $('.tag-post').val() || null;
 
-		tempPost.author = currentUser;
-		tempPost.postTime = (postDate + postTime);
-		tempPost.facebook = checkMedia('.facebook');
-		tempPost.twitter = checkMedia('.twitter');
-		tempPost.instagram = checkMedia('.instagram');
-		tempPost.content = postArea.val();
+		var tempPost = {
+			postTime: (postDate + postTime),
+			author: currentUser,
+			postAuthor: null,
+			content: postArea.val(),
+			color: null,
+			facebook: checkMedia('.facebook'),
+			twitter: checkMedia('.twitter'),
+			instagram: checkMedia('.instagram'),
+			tags: [],
+			image: null,
+			isPublic: false
+		};
 
 		if (tags) {
 			tempPost.tags = tags.split("#");
 		}
 
-		postsArray.push(tempPost);
-
+		makeNewPost(tempPost);
+			
 		renderFeed();
 
-		// postArea.val('');
+		savePosts();
+
 		if (tags) {
 			tags.val('');
 		}
-
-
-		// EMPTY OUT THE FIELDS
-
+	
+		// Close post menu
 		$('#btn-post').click();
 	});
-
 
 
 
@@ -156,8 +265,6 @@ console.log('postsArray', postsArray);
 		$(this).toggleClass('highlight');
 	});
 
-
-console.log("This user", currentUser);
 
 
 
