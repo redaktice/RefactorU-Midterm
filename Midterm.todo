@@ -18,3 +18,6 @@ STORAGE:
    ☐ Refactor Main-Page design
    ☐ Refactor Login-Page design
    ☐ Refactor Fak-Data design
+  BUGS:
+    ☐ Get Date for post has wrong digits for years
+    ☐ No automatic focus to the textarea for adding a post

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -31,13 +30,13 @@
 							<ul class="nav navbar-nav inline-block centered">
 							
 							<!-- Template -->
-								<li id="template" class="hidden media-circle-md"></li>
+								<li id="template" class="absent media-circle-md"></li>
 					
 								<li><i class="icon facebook media-circle-md fa fa-facebook"></i></li>
 								<li><i class="icon twitter media-circle-md fa fa-twitter"></i></li>
 								<li><i class="icon instagram media-circle-md fa fa-instagram"></i></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><button class="btn btn-default btn-circle"><h3 class="inline-block no-mgn"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
+								<li><img class="icon img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><button class="icon icon-btn btn-default btn-circle"><h3 class="inline-block no-mgn"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
 							</ul>
 				
 							<!-- Settings Button -->
@@ -68,18 +67,18 @@
 				<div class="user inline-block">
 					<img src="http://placehold.it/150x150" alt="" class="user-img img-circle">
 					<div class="user-info inline-block">
-						<h2 class="user-name">Name <small>Last</small></h2>
+						<h2><span class="user-firstName">Name</span><small class="user-lastName">Last</small></h2>
 						<h3 class="user-age">Age</h3>
 					</div>
 				</div>
 
 				<div class="media inline-block">
 					<ul class="list-unstyled list-inline text-right">
-						<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
-						<li><i class="twitter media-circle-md fa fa-twitter"></i></li>
-						<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
-						<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-						<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+						<li><i class="icon icon-btn facebook media-circle-md fa fa-facebook"></i></li>
+						<li><i class="icon icon-btn twitter media-circle-md fa fa-twitter"></i></li>
+						<li><i class="icon icon-btn instagram media-circle-md fa fa-instagram"></i></li>
+						<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
+						<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
 					</ul>
 				</div>
 			</div>
@@ -93,20 +92,20 @@
 				<div class="media inline-block">
 						<ul class="list-unstyled list-inline text-right">
 								<li><h3>ALL</h3></li>
-								<li><i class="icon facebook media-circle-md fa fa-facebook"></i></li>
-								<li><i class="icon twitter media-circle-md fa fa-twitter"></i></li>
-								<li><i class="icon instagram media-circle-md fa fa-instagram"></i></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><i class="icon icon-btn facebook media-circle-md fa fa-facebook"></i></li>
+								<li><i class="icon icon-btn twitter media-circle-md fa fa-twitter"></i></li>
+								<li><i class="icon icon-btn instagram media-circle-md fa fa-instagram"></i></li>
+								<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
 						</ul>
 					</div>
-					<div class="box-center">
+					<div class="box-center" id="feed">
 						<div class="post">
 							<div class="post-head">
 								<div class="inline-block post-icons box-side-left">
 									<ul class="list-unstyled list-inline">
 									<!-- Template -->
-										<li id="template" class="media-circle-xs hidden"></li>
+										<li id="template" class="media-circle-xs absent"></li>
 										<li><i class="icon facebook media-circle-xs fa fa-facebook"></i></li>
 										<li><i class="icon twitter media-circle-xs fa fa-twitter "></i></li>
 										<li><i class="icon instagram media-circle-xs fa fa-instagram"></i></li>
@@ -124,6 +123,31 @@
 					</div>
 			</div>
 
+
+
+<!-- POST TEMPLATE -->
+<div class="box-center" id="template-post">
+						<div class="post">
+							<div class="post-head">
+								<div class="inline-block post-icons box-side-left">
+									<ul class="list-unstyled list-inline">
+									<!-- Template -->
+										<li id="template" class="media-circle-xs absent"></li>
+										<li><i class="icon facebook media-circle-xs fa fa-facebook"></i></li>
+										<li><i class="icon twitter media-circle-xs fa fa-twitter "></i></li>
+										<li><i class="icon instagram media-circle-xs fa fa-instagram"></i></li>
+									</ul>
+								</div>
+								<div class="date inline-block box-side-right">
+									Date
+								</div>
+							</div>
+							<div class="post-content">
+								<span class="post-author"><img class="img-circle" src="http://placehold.it/40x40" alt="">ME</span>
+									<p>This is a post. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis sequi voluptatum nesciunt, obcaecati ipsam eum fuga itaque nobis, esse sunt corporis dolores explicabo animi voluptates? Repellendus eos dicta labore.</p>
+							</div>
+						</div>
+					</div>
 
 
 	<!-- FRIENDS -->
@@ -154,20 +178,21 @@
 
 					<!-- Popup -->
 					<div class="btn-group dropup">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><h4 class="inline-block">Post<span class="caret"></span></h4></button>
-						<div class="dropdown-menu" role="menu">
+						<button type="button" id="btn-post" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><h4 class="inline-block">Post<span class="caret"></span></h4></button>
+						<div id="post-menu" class="dropdown-menu" role="menu">
 							<form action="form" class="post-form">
 								<div class="form-group">
-									<textarea name="post" id="" cols="30" rows="10" placeholder="Share your thoughts"></textarea>
+									<textarea name="post" id="new-post" cols="30" rows="5" placeholder="Share your thoughts"></textarea>
+									<textarea name="" id="tag-post" cols="30" rows="2" placeholder="# It"></textarea>
 								</div>
 
 								<!-- Share icons -->
 								<div class="media inline-block">
 									<ul class="list-unstyled list-inline text-right">
 										<li><h3>ALL</h3></li>
-										<li><i class="facebook media-circle-md fa fa-facebook"></i></li>
-										<li><i class="twitter media-circle-md fa fa-twitter"></i></li>
-										<li><i class="instagram media-circle-md fa fa-instagram"></i></li>
+										<li><i class="to-media facebook media-circle-md fa fa-facebook"></i></li>
+										<li><i class="to-media twitter media-circle-md fa fa-twitter"></i></li>
+										<li><i class="to-media instagram media-circle-md fa fa-instagram"></i></li>
 										<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 										<li><img class="img-circle" src="http://placehold.it/50x50" alt=""></li>
 									</ul>
@@ -175,7 +200,7 @@
 
 								<!-- Submit -->
 								<div class="form-group">
-									<button type="button" class="btn btn-success vibe">Vibe</button>
+									<button type="button" class="vibe btn btn-success vibe">Vibe</button>
 								</div>
 							</form>
 						</div>
@@ -203,8 +228,10 @@
 
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-		<script src="app.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+		<script src="login.js"></script>
+		<script src="homepage.js"></script>
+		<script src="login.js"></script>
 		<script src="admin.js"></script>
 
 

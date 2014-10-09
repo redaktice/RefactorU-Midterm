@@ -1,4 +1,34 @@
 
+  
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+									STORAGE
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/**
+ * Save information for each User
+ * @return {[object]} localStorage with values from the User
+ */
+var saveUsers = function() {
+
+	localStorage.setItem('allData', JSON.stringify(allUsers));
+};
+
+
+
+
+/**
+ * Save information for each Post
+ * @return {[object]} localStorage with values from the Post
+ */
+var savePosts = function() {
+
+	localStorage.setItem('allPosts', JSON.stringify(postsArray));
+};
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 									CLASSES
@@ -24,16 +54,25 @@
  * @param {string}  username    User username for Vibe
  * @param {string}  password    User password for Vibe
  */
-var User = function (firstName, lastName, email, age, image, isPublic, username, password) {
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.email = email;
-	this.age = age;
-	this.media = [];
-	this.image = image;
-	this.isPublic = isPublic || false;
-	this.username = username;
-	this.password = password;
+var User = function (firstName, lastName, email, color, age, image, isPublic, username, password) {
+	
+	if (typeof(firstName) === 'string') {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.color = color;
+		this.age = age;
+		this.media = [];
+		this.image = image;
+		this.isPublic = isPublic || false;
+		this.username = username;
+		this.password = password;
+	}
+	else {
+		for (var key in firstName) {
+			this[key] = firstName[key];
+		}
+	}
 };
 
 
@@ -112,29 +151,78 @@ var instagram = new Media ('Instagram');
 
 
 
+
+var usersArrayString = JSON.parse(localStorage.getItem('allData')) || [];
+
+var allUsers = usersArrayString.map(function(objectLiteral) {
+	return new User (objectLiteral);
+});
+
+
+
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					NEW POSTS
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+
 
 /*--------------CONSTRUCTOR-----------------*/
 
 /**
  * Creates base class for each kind of social media
- * @param {string}  postTime     The time this post was created
- * @param {Boolean}  username    Is this being sent to Facebook?
+ * @param {String}  postTime     The time this post was created
+ * @param {Object}  author    The user object that created this post
+ * @param {Object}  content    The user actual content of the page
+ * @param {Boolean}  facebook    Is this being sent to Facebook?
  * @param {Boolean}  twitter    Is this being sent to Twitter?
  * * @param {Boolean}  instagram    Is this being sent to Instagram?
  * * @param {Array}  tags    Array of random tags that can be used to identify the post and its contents
  * @param {Boolean} isPublic Determine if the user wants THIS MEDIA INSTANCE to be public (default private)
  */
-var NewPost = function (postTime, facebook, twitter, instagram, tags, isPublic) {
-	this.postTime = postTime;
-	this.facebook = facebook;
-	this.twitter = twitter;
-	this.instagram = instagram;
-	this.tags = tags;
-	this.isPublic = isPublic || false;
+var Post = function (postTime, author, content, facebook, twitter, instagram, tags, img, isPublic) {
+
+	if (typeof(postTime) === 'string') {
+		this.postTime = postTime;
+		this.author = author;
+		this.postAuthor = author.firstName + ' ' + author.lastName;
+		this.content = content;
+		this.color = author.color;
+		this.facebook = facebook;
+		this.twitter = twitter;
+		this.instagram = instagram;
+		this.tags = tags;
+		this.image = img || null;
+		this.isPublic = isPublic || false;
+	}
+
+	else {
+		for (var key in postTime) {
+			this[key] = postTime[key];
+		}
+	}
 };
 
 
+
 /*----------------METHODS-------------------*/
+
+Post.prototype.renderPost = function () {
+
+	var newPost = $('#template-post').clone();
+
+	newPost.attr('id', '');
+	newPost.find('.date').text(this.postTime);
+	newPost.find('.post-author').text(this.postAuthor);
+};
+
+
+
+var postsArrayString = JSON.parse(localStorage.getItem('allPosts')) || [];
+
+var postsArray = postsArrayString.map(function(objectLiteral) {
+	return new Post (objectLiteral);
+});
+
+

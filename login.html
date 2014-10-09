@@ -48,16 +48,16 @@
 					<div class="absolute form-container form-container-avg">
 						<div class="inline-block centering">
 						
-							<form action="form" class="center-form form">
-								<div class="hidden failed-login">
+							<form action="form" id="sign-in" class="center-form form">
+								<div class="absent failed-login">
 									<p class="bg-danger">No matching username/password</p>
 									<p class="bg-danger">Try again or create account</p>
 								</div>
 								<div class="form-group">
-									<input class="input-username" type="username" placeholder="Username">
+									<input required class="input-username" type="username" placeholder="Username">
 								</div>
 								<div class="form-group">
-									<input class="input-password" type="password" placeholder="Password">
+									<input required class="input-password" type="password" placeholder="Password">
 								</div>
 								<div class="form-group container-fluid">
 									<button id="login" class="btn btn-primary btn-lg">Login</button>
@@ -73,44 +73,45 @@
 					<!-- creeate account -->
 					<div class="absolute form-container form-container-tall">
 						<div class="inline-block centering form-container-wide">
-							<form action="form" class="center-form form-wide">
+							<form action="form" id="new-user" class="absent center-form form-wide">
 								<div class="signup-prompt">
 									<p class="bg-success">Welcome!</p>
 									<p class="bg-success">Please complete</p>
 								</div>
-								<div class="hidden failed-signup">
-									<p class="bg-danger">Uh oh, please try again</p>
+
+								<div class="form-group">
+									<input  required class="centering input-firstname" type="text" placeholder="First Name">
 								</div>
 
 								<div class="form-group">
-									<input class="centering input-firstname" type="text" placeholder="First Name">
+									<input required class="centering input-lastname" type="text" placeholder="Last Name">
 								</div>
 
 								<div class="form-group">
-									<input class="centering input-lastname" type="text" placeholder="Last Name">
+									<input required class="centering input-age" type="text" placeholder="Age">
 								</div>
 
 								<div class="form-group">
-									<input class="centering input-age" type="text" placeholder="Age">
+									<input required class="centering input-email" type="email" placeholder="example@beingawesome.com">
 								</div>
 
 								<div class="form-group">
-									<input class="centering input-email" type="email" placeholder="example@beingawesome.com">
+									<input required class="centering input-username" type="username" placeholder="Username">
 								</div>
 
 								<div class="form-group">
-									<input class="centering input-username" type="username" placeholder="Username">
+									<input required class="centering input-password" type="password" placeholder="Password: At leaset 8 characters">
+								</div>
+									<div class="absent form-group failed-signup">
+									<p class="bg-danger">Please make password 8 or more characters</p>
 								</div>
 
-								<div class="form-group">
-									<input class="centering input-password" type="password" placeholder="Password: At leaset 8 characters">
-								</div>
 								<div class="form-group container-fluid">
 									<button id="create" class="btn btn-success btn-lg">Create!</button>
 								</div>
 
 								<div class="form-group container-fluid">
-									<button class="terms-of-use btn btn-info btn-xs">Terms of use</button>
+									<a href="#" class="terms-of-use btn btn-info btn-xs">Terms of use</a>
 								</div>
 							</form>
 											
@@ -186,10 +187,12 @@
 
 		</div>
 
+
+		 <!-- JAVASCRIPT FILES -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-		<script src="app.js"></script>
+		<script src="login.js"></script>
 		<script src="admin.js"></script>
 
 	</body>
