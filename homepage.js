@@ -1,12 +1,15 @@
 
 
+var currentTime = new Date();
 $(document).on('ready', function() {
 
 
 /*----------------------------GLOBAL VARIABLES----------------------------*/
 	var postArea = $("#new-post");
 
-
+	var currentTime = new Date();
+	var postDate = 'Vibed: ' + (currentTime.getMonth() + 1) + '.' + currentTime.getDate() + '.' + currentTime.getFullYear();
+	var postTime = ' @ ' + currentTime.getHours() +':' + currentTime.getMinutes();
 /*----------------------------INITIALIZATION FUNCTIONS----------------------------*/
 
 	/**
@@ -16,7 +19,7 @@ $(document).on('ready', function() {
 	 */
 	var postToDOM = function (postObject) {
 
-		
+// console.log("postToDOM");
 		/**
 		 * HELPER FUNCTION CREATES DOM ELEMENTS FOR SMALL MEDIA ICONS
 		 * @param  {String} media Media name
@@ -31,31 +34,84 @@ $(document).on('ready', function() {
 			return mediaIndicator;
 		};
 
+		var makeOptionIndicator = function (media) {
+			var mediaOptionIndicator = $('#add-media-template').clone();
+			mediaOptionIndicator.attr('id', '');
+			mediaOptionIndicator.removeClass('template');
+			mediaOptionIndicator.find('i').addClass(media + ' fa-' + media);
+
+// console.log("Media Option", mediaOptionIndicator);
+
+			return mediaOptionIndicator;
+		};
+
 			var postDOMElement = $('#template.template-post').clone();
 
+			var removeMediaPost = postDOMElement.find('.minus-media-xs');
+			var addMediaPost = postDOMElement.find('.add-media-xs');
 			var postMedia = postDOMElement.find('.media-list');
 
+// console.log("addMediaPost", addMediaPost);
+// console.log("removeMediaPost", removeMediaPost);
 
 			postDOMElement.attr('id', '');
-			postDOMElement.find('.date').text(postObject.postTime);
+			if (postObject.reVibeTime) {
+				postDOMElement.find('.date').text(postObject.reVibeTime + postObject.postTime);
+			}
+			else {
+				postDOMElement.find('.date').text(postObject.postTime);
+			}
+
+console.log("Post ID", postObject.id);
+
+			postDOMElement.attr('data-post-id', postObject.id);
+
 			postDOMElement.find('.post-author').text(postObject.postAuthor);
 			postDOMElement.find('.post-text').text(postObject.content);
 
-
+// console.log("Add Media: list", addMediaPost.find('alter-media-list'));
 			if (postObject.facebook) {
-				postMedia.append(makeMediaIndicator('facebook'));
+				removeMediaPost.after(makeMediaIndicator('facebook'));
+				removeMediaPost.find('.alter-media-list').append(makeOptionIndicator('facebook'));
+
+// console.log("Remove facebook", addMediaPost.find('alter-media-list'));
 			}
+
+			else {
+				addMediaPost.find('.alter-media-list').prepend(makeOptionIndicator('facebook'));
+// console.log("TEST");
+// console.log($('.add-media-xs').find('li').attr('class'));
+			}
+
+
+
 			if (postObject.twitter) {
-				postMedia.append(makeMediaIndicator('twitter'));
+				removeMediaPost.after(makeMediaIndicator('twitter'));
+				removeMediaPost.find('.alter-media-list').append(makeOptionIndicator('twitter'));
+
 			}
+			else {
+				addMediaPost.find('.alter-media-list').prepend(makeOptionIndicator('twitter'));
+			}
+
+
+
 			if (postObject.instagram) {
-				postMedia.append(makeMediaIndicator('instagram'));
+				removeMediaPost.after(makeMediaIndicator('instagram'));
+				removeMediaPost.find('.alter-media-list').append(makeOptionIndicator('instagram'));
+			}
+			else {
+				addMediaPost.find('.alter-media-list').prepend(makeOptionIndicator('instagram'));
 			}
 
 
-			if (!(postObject.facebook && postObject.twitter && postObject.instagram)) {
-				postMedia.find('.add-media-xs').attr('id', '');
-			}
+			// if ((postObject.facebook && postObject.twitter && postObject.instagram)) {
+			// 	postDOMElement.find('.add-media-xs').addClass('absent');
+			// }
+
+			// else {
+			// 	// postDOMElement.find('.add-media-xs').show();
+			// }
 
 // console.log("Media Icon:", mediaIconXS());
 
@@ -64,7 +120,48 @@ $(document).on('ready', function() {
 			return (postDOMElement);
 	};
 
+	/**
+	 * FILTER POSTSARRAY BY SELECTED MEDIA
+	 * @return {[Array]} [Filtered Posts from postsArray]
+	 */
+	var filterPosts = function () {
 
+console.log("FILTER");
+
+		var showFacebook = true;
+		var showTwitter = true;
+		var showInstagram = true;
+
+		var iconButton = $('.icon-btn');
+		var allIconsButton = $('#btn-all');
+
+		// All is selected
+		if (allIconsButton.hasClass('highlight')) {
+			showFacebook = true;
+			showTwitter = true;
+			showInstagram = true;
+// console.log("All selected");
+
+		}
+		else {
+			showFacebook = $('.media-filter.facebook').hasClass('highlight');
+			showTwitter = $('.media-filter.twitter').hasClass('highlight');
+			showInstagram = $('.media-filter.instagram').hasClass('highlight');
+		}
+
+		return _.filter(postsArray, function (postObject) {
+// console.log('showFacebook', showFacebook);
+// console.log('showTwitter', showTwitter);
+// console.log('showInstagram', showInstagram);
+// console.log(postObject);
+
+		return ((postObject.facebook === showFacebook) || (postObject.twitter === showTwitter) || (postObject.instagram === showInstagram));
+		});
+	};
+
+	filterPosts();
+
+ // console.log("Filtered Posts", filterPosts());
 
 
 	/**
@@ -76,9 +173,14 @@ $(document).on('ready', function() {
 		var feed = $('#feed');
 		feed.empty();
 
-		var renderedPostsArray = postsArray.map(function (postObject) {
-			feed.prepend(postToDOM(postObject));
+// console.log(filterPosts());
+
+		var renderedPostsArray = filterPosts().map(function (postObject) {
+			feed.append(postToDOM(postObject));
 		});
+
+
+console.log("RENDER");
 	};
 
 	renderFeed();
@@ -150,7 +252,7 @@ $(document).on('ready', function() {
 	 * @return {Object}          Push new instance of Post to postsArray
 	 */
 	var makeNewPost = function (tempPost) {
-		var newPost = new Post(tempPost.postTime, tempPost.author, tempPost.content, tempPost.facebook, tempPost.twitter, tempPost.instagram, tempPost.tags, tempPost.image, tempPost.isPublic);
+		var newPost = new Post(tempPost.postTime, tempPost.id, tempPost.author, tempPost.content, tempPost.facebook, tempPost.twitter, tempPost.instagram, tempPost.tags, tempPost.image, tempPost.isPublic);
 		pushPostsArray(newPost);
 	};
 
@@ -182,30 +284,9 @@ $(document).on('ready', function() {
 
 
 
-	/**
-	 * KEEP DROPUP OPEN
-	 * @param  {event} e defualt
-	 * @return {function}   stop propogation from bootstrap
-	 */
-	$('#post-menu').on('click', function(e) {
-		e.stopPropagation();
-		// savePosts();
-	});
+	
 
-
-	/**
-	 * CHOOSE TO WRITE A NEW POST
-	 * @param  {event} e default
-	 * @return {DOM}   Focuses on the new post text area
-	 */
-	// $('#btn-post').on('click', function(e) {
-		// var postArea = $("#new-post");
-	// 	postArea.focus();
-	// });
-
-
-
-
+var newID = 0;
 	/**
 	 * CREATES A POST
 	 * @param  {[Event]} e default
@@ -213,14 +294,16 @@ $(document).on('ready', function() {
 	 */
 	$('.vibe').on('click', function(e) {
 
-		var currentTime = new Date();
-		var postDate = 'Vibed: ' + (currentTime.getMonth() + 1) + '.' + currentTime.getDate() + '.' + currentTime.getYear();
-		var postTime = ' @ ' + currentTime.getHours() +':' + currentTime.getMinutes();
+console.log("Post Date", postDate);
+console.log("Post Time", postTime);
+console.log(postDate + postTime);
+
 
 		var tags = $('.tag-post').val() || null;
 
 		var tempPost = {
 			postTime: (postDate + postTime),
+			id: newID,
 			author: currentUser,
 			postAuthor: null,
 			content: postArea.val(),
@@ -249,6 +332,8 @@ $(document).on('ready', function() {
 	
 		// Close post menu
 		$('#btn-post').click();
+
+		newID++;
 	});
 
 
@@ -258,14 +343,128 @@ $(document).on('ready', function() {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 	/**
-	 * CLICK A MEDIA ICON
-	 * @return {[Adds Class]} Highlights the clicked button
+	 * HIGHLIGHT MEDIA ICONS AND FILTER FEED BY MEDIA TYPE
+	 * @return {Function} Re-render Feed in DOM
 	 */
-	$('.icon-btn, .to-media').on('click', function () {
-		$(this).toggleClass('highlight');
+	$('.icon-btn').on('click', function () {
+
+		var nthis = $(this);
+		var allIconsButton = $('#btn-all');
+
+		nthis.toggleClass('highlight');
+
+		if (nthis.hasClass('icon')) {
+			$('.media-filter').removeClass('highlight');
+
+			if (!allIconsButton.hasClass('highlight')) {
+				allIconsButton.addClass('highlight');
+			}
+		}
+		else {
+			allIconsButton.removeClass('highlight');
+		}
+		renderFeed();
 	});
 
 
+
+
+
+
+
+// $('.dropdown-menu').on('click', function (e) {
+// 	e.stopPropagation();
+// });
+
+
+
+
+
+
+$(document).on('click', '.to-media', function (e) {
+	e.stopPropagation();
+	$(this).toggleClass('highlight');
+
+	console.log("highlight");
+});
+
+
+
+
+
+$(document).on('click', '.re-vibe', function (e) {
+	e.stopPropagation();
+	var nthis = $(this);
+
+	var postID = nthis.parent().closest('.post').attr('data-post-id');
+
+console.log("Returned Post ID", postID);
+
+
+	var highlightedElements = "";
+	var selectedMedia = nthis.closest('ul').find('i.highlight');
+
+console.log("selectedMedia", selectedMedia);
+
+
+
+	var reVibedPost = _.find(postsArray, function (postObject) {
+
+console.log("Object ID from postsArray", postObject.id);
+
+
+		return postObject.id == postID;
+	});
+
+
+
+
+
+console.log("Pushed this", nthis);
+
+	selectedMedia.map(function(index, domElement) {
+
+		if($(domElement).hasClass('facebook')) {
+			reVibedPost.facebook = !reVibedPost.facebook;
+			highlightedElements += 'Facebook ';
+		}
+
+		if ($(domElement).hasClass('twitter')) {
+			reVibedPost.twitter = !reVibedPost.twitter;
+			highlightedElements += 'Twitter ';
+		}
+
+		if ($(domElement).hasClass('instagram')) {
+			reVibedPost.instagram = !reVibedPost.instagram;
+			highlightedElements += 'Instagram ';
+		}
+	});
+
+	if (nthis.closest('.dropup').hasClass('add-media-xs')) {
+		reVibedPost.reVibeTime = 'ReVibed to ' + highlightedElements + ' on ' + (postDate + postTime);
+	}
+
+	if (nthis.closest('.dropup').hasClass('minus-media-xs')) {
+		reVibedPost.reVibeTime = 'Vibe removed from ' + highlightedElements + ' on ' + (postDate + postTime);
+	}
+
+
+console.log("highlightedElements", highlightedElements);
+
+	renderFeed();
+	savePosts();
+
+});
+
+/**
+	 * KEEP DROPUP OPEN
+	 * @param  {event} e defualt
+	 * @return {function}   stop propogation from bootstrap
+	 */
+	$('#post-menu textarea').on('click', function(e) {
+		e.stopPropagation();
+		// savePosts();
+	});
 
 
 }); // --> END JQUERY

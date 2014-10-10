@@ -165,19 +165,19 @@ var allUsers = usersArrayString.map(function(objectLiteral) {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
-var postToDOM = function (time, author) {
-	var renderedPost = $('#template-post').clone();
+// var postToDOM = function (time, author) {
+// 	var renderedPost = $('#template-post').clone();
 
-	renderedPost.attr('id', '');
-	renderedPost.find('.date').text(time);
-	renderedPost.find('.post-author').text(author);
-	renderedPost.removeClass('template');
-console.log("rendered", renderedPost);
+// 	renderedPost.attr('id', '');
+// 	renderedPost.find('.date').text(time);
+// 	renderedPost.find('.post-author').text(author);
+// 	renderedPost.removeClass('template');
+// console.log("rendered", renderedPost);
 
-	// savePosts();
+// 	// savePosts();
 
-	return (renderedPost);
-};
+// 	return (renderedPost);
+// };
 
 /*--------------CONSTRUCTOR-----------------*/
 
@@ -192,14 +192,16 @@ console.log("rendered", renderedPost);
  * * @param {Array}  tags    Array of random tags that can be used to identify the post and its contents
  * @param {Boolean} isPublic Determine if the user wants THIS MEDIA INSTANCE to be public (default private)
  */
-var Post = function (postTime, author, content, facebook, twitter, instagram, tags, img, isPublic) {
+var Post = function (postTime, id, author, content, facebook, twitter, instagram, tags, img, isPublic) {
 
 	if (typeof(postTime) === 'string') {
 		this.postTime = postTime;
+		this.id = id;
 		this.author = author;
 		this.postAuthor = author.firstName + ' ' + author.lastName;
 		this.content = content;
 		this.color = author.color;
+		this.reVibeTime = null;
 		this.facebook = facebook;
 		this.twitter = twitter;
 		this.instagram = instagram;

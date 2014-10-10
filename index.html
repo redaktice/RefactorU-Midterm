@@ -36,7 +36,7 @@
 								<li><i class="icon twitter media-circle-md fa fa-twitter"></i></li>
 								<li><i class="icon instagram media-circle-md fa fa-instagram"></i></li>
 								<li><img class="icon img-circle" src="http://placehold.it/50x50" alt=""></li>
-								<li><button class="icon icon-btn btn-default btn-circle"><h3 class="inline-block no-mgn"><span class="glyphicon glyphicon-plus"></span></h3></button></li>
+								<li><button class="icon icon-btn btn-default btn-circle"><h1 class="inline-block no-mgn"><i class="fa fa-plus-circle"></i></h1></button></li>
 							</ul>
 				
 							<!-- Settings Button -->
@@ -91,20 +91,19 @@
 				<h2>FEED</h2>
 				<div class="media inline-block">
 						<ul class="list-unstyled list-inline text-right">
-								<li><h3>ALL</h3></li>
-								<li><i class="icon icon-btn facebook media-circle-md fa fa-facebook"></i></li>
-								<li><i class="icon icon-btn twitter media-circle-md fa fa-twitter"></i></li>
-								<li><i class="icon icon-btn instagram media-circle-md fa fa-instagram"></i></li>
-								<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
+								<button class="icon icon-btn btn-default btn-circle highlight" id="btn-all"><h3 class="inline-block no-mgn">All</h3></button>
+								<li><i class="icon-btn media-filter facebook media-circle-md fa fa-facebook"></i></li>
+								<li><i class="icon-btn media-filter twitter media-circle-md fa fa-twitter"></i></li>
+								<li><i class="icon-btn media-filter instagram media-circle-md fa fa-instagram"></i></li>
 								<li><img class="icon icon-btn img-circle" src="http://placehold.it/50x50" alt=""></li>
 						</ul>
 					</div>
 					<div class="box-center" id="feed">
-						<div class="post">
+						<!-- <div class="post">
 							<div class="post-head">
 								<div class="inline-block post-icons box-side-left">
 									<ul class="list-unstyled list-inline">
-									<!-- Template -->
+									<!-- Template --
 										<li id="template" class="media-circle-xs absent"></li>
 										<li><i class="icon facebook media-circle-xs fa fa-facebook"></i></li>
 										<li><i class="icon twitter media-circle-xs fa fa-twitter "></i></li>
@@ -120,20 +119,55 @@
 									<p>This is a post. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis sequi voluptatum nesciunt, obcaecati ipsam eum fuga itaque nobis, esse sunt corporis dolores explicabo animi voluptates? Repellendus eos dicta labore.</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 			</div>
 
 
 
 <!-- POST TEMPLATE -->
 <!-- <div class="box-center" id=""> -->
-						<div class="post template-post" id="template">
+						<div class="post template-post" data-post-id="" id="template">
 							<div class="post-head">
 								<div class="inline-block post-icons box-side-left">
 									<ul class="list-unstyled list-inline media-list">
 									<!-- Template -->
 										<li id="icon-template" class="template"><i class="icon media-circle-xs fa"></i></li>
-									<li class="add-media-xs" id="template"><button class="icon btn-circle-xs btn-default"><span class="inline-block no-mgn"><span class="glyphicon glyphicon-plus"></span></span></button></li>
+										<li class="btn-group dropup minus-media-xs" id="">
+											<h4 class="btn dropdown-toggle" data-toggle="dropdown"><span class="icon inline-block no-mgn"><i class="fa fa-minus-circle"></i></span></h4>
+
+
+													<!-- REMOVE icons -->
+													<div id="" class="dropdown-menu relative" role="menu">
+														<div class="media inline-block">
+															<ul class="list-unstyled list-inline text-right alter-media-list">
+															
+
+															<!-- MEDIA ALREADY VIBED GOES HERE -->
+
+
+																<li><button type="button" class="re-vibe btn btn-success btn-circle-xs">V</button></li>
+															</ul>
+														</div>
+												</div>
+										</li>
+
+										<li class="btn-group dropup add-media-xs" id="">
+											<h4 class="btn dropdown-toggle" data-toggle="dropdown"><span class="icon inline-block no-mgn"><i class="fa fa-plus-circle"></i></span></h4>
+
+
+													<!-- ADD icons -->
+													<div id="" class="dropdown-menu relative" role="menu">
+														<div class="media inline-block">
+															<ul class="list-unstyled list-inline text-right alter-media-list">
+														
+
+														<!-- MEDIA NOT VIBED GOES HERE -->
+
+																<li><button type="button" class="re-vibe btn btn-success btn-circle-xs">V</button></li>
+															</ul>
+														</div>
+												</div>
+										</li>
 									</ul>
 								</div>
 								<div class="date inline-block box-side-right">
@@ -144,8 +178,18 @@
 								<span><img class="img-circle" src="http://placehold.it/40x40" alt=""><span class="post-author">ME</span></span>
 									<p class="post-text">This is a post. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe omnis sequi voluptatum nesciunt, obcaecati ipsam eum fuga itaque nobis, esse sunt corporis dolores explicabo animi voluptates? Repellendus eos dicta labore.</p>
 							</div>
+							<div class="page-header"></div>
+							<h5 class="">Tags</h5>
 						</div>
 					<!-- </div> -->
+
+
+
+
+
+<!-- TEMPLATE -->
+	<li id="add-media-template"class="template"><i class="to-media media-circle-xs fa"></i></li>
+
 
 
 	<!-- FRIENDS -->
@@ -181,7 +225,7 @@
 							<form action="form" class="post-form">
 								<div class="form-group">
 									<textarea name="post" id="new-post" cols="30" rows="5" placeholder="Share your thoughts"></textarea>
-									<textarea name="" id="tag-post" cols="30" rows="2" placeholder="# It"></textarea>
+									<textarea name="" id="tag-post" cols="30" rows="2" placeholder="#It"></textarea>
 								</div>
 
 								<!-- Share icons -->
