@@ -185,6 +185,9 @@
 	background-color: #979;
 }
 
+.linkedin {
+	background-color: #77D;
+}
 
 /*Icon shape*/
 	.media-circle-md {
@@ -216,6 +219,11 @@
 	width: 150px;
 }
 
+
+.friends img {
+	height: 40px;
+	width: 40px;
+}
 
 /*----------------------------FEED----------------------------*/
 
@@ -314,8 +322,8 @@
 	background-color: rgba(150, 150, 150, .5);
 }
 
-.carousel-item-1 {
-	background-image: url("../attachments/IMG_2438.JPG");
+.carousel-item-1 { 
+	background-image: url("./attachments\ \(2\)/IMG_1900.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -327,7 +335,7 @@
 }
 
 .carousel-item-2 {
-	background-image: url("../attachments/IMG_2439.JPG");
+	background-image: url("./attachments/IMG_2438.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -336,10 +344,10 @@
 	height: 100%;
 	width: 100%;
 	background-color: rgba(50, 150, 50, .5);
-}
+} 
 
 .carousel-item-3 {
-	background-image: url("../attachments/IMG_2440.JPG");
+	background-image: url("./attachments\ \(1\)/IMG_2023.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -350,7 +358,7 @@
 	background-color: rgba(150, 50, 50, .5);
 }
 .carousel-item-4 {
-	background-image: url("../attachments/IMG_2443.JPG");
+	background-image: url("./attachments/IMG_2439.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }

@@ -17,7 +17,7 @@ $(document).on('ready', function() {
 /*-------------------------GLOBAL VARIABLES------------------------*/
 
 
-var defaultImage = "../attachments/IMG_2440.JPG"; //'http://placehold.it/150x150';
+var defaultImage = "./attachments/IMG_2440.JPG"; //'http://placehold.it/150x150';
 
 
 
