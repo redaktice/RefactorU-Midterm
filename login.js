@@ -141,7 +141,7 @@ console.log("confirmedUser", confirmedUser);
 			firstName: inputFirstName,
 			lastName: inputLastName,
 			email: inputEmail,
-			color: '#000',
+			color: 'red',
 			age: inputAge,
 
 			img: defaultImage,

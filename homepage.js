@@ -20,6 +20,8 @@ $(document).on('ready', function() {
 	var postToDOM = function (postObject) {
 
 // console.log("postToDOM");
+// 
+// 
 		/**
 		 * HELPER FUNCTION CREATES DOM ELEMENTS FOR SMALL MEDIA ICONS
 		 * @param  {String} media Media name
@@ -34,6 +36,12 @@ $(document).on('ready', function() {
 			return mediaIndicator;
 		};
 
+
+		/**
+		 * HELPER FUNCTION CREATES DOM ELEMENTS FOR SMALL MEDIA ADDITION/SUBTRACTION ICONS
+		 * @param  {String} media Media name
+		 * @return {DOM}       Items specific to Media
+		 */
 		var makeOptionIndicator = function (media) {
 			var mediaOptionIndicator = $('#add-media-template').clone();
 			mediaOptionIndicator.attr('id', '');
@@ -69,6 +77,7 @@ $(document).on('ready', function() {
 
 // console.log(postDOMElement.find('.img-post-user').attr('src'));
 			postDOMElement.find('.img-post-user').attr('src', postObject.author.image);
+			postDOMElement.addClass( postObject.author.color);
 			postDOMElement.find('.post-author').text(postObject.postAuthor);
 			postDOMElement.find('.post-text').text(postObject.content);
 			
@@ -344,20 +353,28 @@ console.log(postDate + postTime);
 			tempPost.tags = tags.split("#");
 		}
 
-		makeNewPost(tempPost);
-			
-		renderFeed();
-
-		savePosts();
-
-		if (tags) {
-			tags.val('');
+		if (!tempPost.facebook && !tempPost.twitter && !tempPost.instagram) {
+			return;
 		}
-	
-		// Close post menu
-		$('#btn-post').click();
 
-		newID++;
+		else {
+
+			makeNewPost(tempPost);
+			renderFeed();
+			savePosts();
+
+			if (tags) {
+				tags.val('');
+			}
+		
+
+			// Close post menu
+			$('#btn-post').click();
+
+			newID++;
+
+			postArea.val('');
+		}
 	});
 
 
@@ -444,48 +461,49 @@ console.log(postDate + postTime);
 
 // console.log("Pushed this", nthis);
 
-	selectedMedia.map(function(index, domElement) {
+		selectedMedia.map(function(index, domElement) {
 
-		if($(domElement).hasClass('facebook')) {
-			reVibedPost.facebook = !reVibedPost.facebook;
-			highlightedElements += 'Facebook ';
+			if($(domElement).hasClass('facebook')) {
+				reVibedPost.facebook = !reVibedPost.facebook;
+				highlightedElements += 'Facebook~ ';
+			}
+
+			if ($(domElement).hasClass('twitter')) {
+				reVibedPost.twitter = !reVibedPost.twitter;
+				highlightedElements += 'Twitter~ ';
+			}
+
+			if ($(domElement).hasClass('instagram')) {
+				reVibedPost.instagram = !reVibedPost.instagram;
+				highlightedElements += 'Instagram~ ';
+			}
+		});
+
+
+
+		if (nthis.closest('.dropup').hasClass('add-media-xs')) {
+			reVibedPost.reVibeTime = 'ReVibed to ' + highlightedElements + ' On ' + (postDate + postTime) + ' -Originally ';
 		}
 
-		if ($(domElement).hasClass('twitter')) {
-			reVibedPost.twitter = !reVibedPost.twitter;
-			highlightedElements += 'Twitter ';
+		if (nthis.closest('.dropup').hasClass('minus-media-xs')) {
+			reVibedPost.reVibeTime = 'Vibe removed from ' + highlightedElements + ' On ' + (postDate + postTime) + ' -Originally ';
 		}
 
-		if ($(domElement).hasClass('instagram')) {
-			reVibedPost.instagram = !reVibedPost.instagram;
-			highlightedElements += 'Instagram ';
-		}
+
+	console.log("highlightedElements", highlightedElements);
+
+		renderFeed();
+		savePosts();
+
 	});
 
-	if (nthis.closest('.dropup').hasClass('add-media-xs')) {
-		reVibedPost.reVibeTime = 'ReVibed to ' + highlightedElements + ' on ' + (postDate + postTime);
-	}
-
-	if (nthis.closest('.dropup').hasClass('minus-media-xs')) {
-		reVibedPost.reVibeTime = 'Vibe removed from ' + highlightedElements + ' on ' + (postDate + postTime);
-	}
-
-
-console.log("highlightedElements", highlightedElements);
-
-	renderFeed();
-	savePosts();
-
-});
-
-/**
+	/**
 	 * KEEP DROPUP OPEN
 	 * @param  {event} e defualt
 	 * @return {function}   stop propogation from bootstrap
 	 */
 	$('#post-menu textarea').on('click', function(e) {
 		e.stopPropagation();
-		// savePosts();
 	});
 
 

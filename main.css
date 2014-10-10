@@ -24,6 +24,10 @@
 	position: relative;
 }
 
+.fixed {
+	position: fixed;
+}
+
 
 /*Give side padding medium strength favoring the right*/
 .pad-md-right {
@@ -51,7 +55,9 @@
 }
 
 
-
+.box-side-right .dropdown-menu {
+	left: -100%;
+}
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					MAIN PAGE
@@ -60,13 +66,41 @@
 
 /*Give the entire page a background color*/
 .main-page {
-	background-color: #CDE;
+	background-color: rgba(130, 215, 240, .4);
+	/*#CDE;*/
 }
 
-
+.navbar {
+	background-color: #E2E0DF;
+	padding-top: 1em;
+	border-radius: 1em;
+	border: .5em solid #DCA;
+}
 
 .highlight {
 	border: .15em solid #AEA;
+}
+
+.main-container {
+	width: 80%;
+}
+
+.aside-left {
+	/*overflow: hidden;*/
+	top: 88%;
+	left:-10%;
+}
+
+.aside-right {
+	/*overflow: hidden;*/
+	top: 88%;
+	right:-10%;
+}
+
+.asides {
+	/*overflow: hidden;*/
+	top: 88%;
+	right:7%;
 }
 /*----------------------------POST----------------------------*/
 
@@ -75,16 +109,45 @@
 	/*width: 80%;*/
 }
 
+#feed {
+	border-radius: 5%;
+}
+
+
+#feed-head {
+	background-color: #CED0D0;
+	padding: 1em 1em .5em 1em;
+	margin: 0;
+	border-radius: 1em;
+	border: 1px solid #000;
+}
+
+
+
+.dropdown-menu {
+	background-color: #CDE;
+	text-align: center;
+	padding: 10px 10px 2px 10px;
+	border: 2px solid #444;
+	border-radius: 1em;
+}
+
 .post {
 	border: 2px solid #000;
+	border-radius: 1em;
+	padding: 1em;
 }
 
 .post-head {
+	background-color: rgba(200, 150, 10, .7);
 	overflow: hidden;
+	padding: 1em;
+	border-radius: 1em;
+	border-bottom: 4px solid #B7B7B7;
 }
 
 .post-icons {
-	border-bottom: 2px solid #AAA;
+	/*border-bottom: 2px solid #AAA;*/
 }
 
 /*----------------------------ICONS----------------------------*/
@@ -161,6 +224,28 @@
 	height: 40px;
 	width: 40px;
 }
+
+
+/*----------------------------POST COLORS----------------------------*/
+
+
+.white {
+	background-color: rgba(0, 0, 0, .2);
+}
+
+.red {
+	background-color: rgba(255, 0, 0, .2);
+}
+
+.blue {
+	background-color: rgba (0, 255, 0, .2);
+}
+
+
+
+
+
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
