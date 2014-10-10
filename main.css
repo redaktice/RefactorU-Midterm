@@ -149,12 +149,18 @@
 .user-img {
 	float: left;
 	margin-right: 5px;
+	height: 150px;
+	width: 150px;
 }
 
 
+/*----------------------------FEED----------------------------*/
 
-
-
+.img-post-user {
+	margin-right: 5px;
+	height: 40px;
+	width: 40px;
+}
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -220,11 +226,11 @@
 .carousel-item-1 .color {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(150, 150, 150, .2);
+	background-color: rgba(150, 150, 150, .5);
 }
 
 .carousel-item-1 {
-	background-image: url("http://placehold.it/250x250");
+	background-image: url("./attachments/IMG_2438.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -232,11 +238,11 @@
 .carousel-item-2 .color {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(50, 90, 150, .2);
+	background-color: rgba(50, 90, 150, .5);
 }
 
 .carousel-item-2 {
-	background-image: url("http://placehold.it/250x250");
+	background-image: url("./attachments/IMG_2439.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -244,11 +250,11 @@
 .carousel-item-3 .color {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(50, 150, 50, .2);
+	background-color: rgba(50, 150, 50, .5);
 }
 
 .carousel-item-3 {
-	background-image: url("http://placehold.it/250x250");
+	background-image: url("./attachments/IMG_2440.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -256,10 +262,10 @@
 .carousel-item-4 .color {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(150, 50, 50, .2);
+	background-color: rgba(150, 50, 50, .5);
 }
 .carousel-item-4 {
-	background-image: url("http://placehold.it/250x250");
+	background-image: url("./attachments/IMG_2443.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }

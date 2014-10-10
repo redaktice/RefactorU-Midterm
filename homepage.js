@@ -8,7 +8,7 @@ $(document).on('ready', function() {
 	var postArea = $("#new-post");
 
 	var currentTime = new Date();
-	var postDate = 'Vibed: ' + (currentTime.getMonth() + 1) + '.' + currentTime.getDate() + '.' + currentTime.getFullYear();
+	var postDate = (currentTime.getMonth() + 1) + '.' + currentTime.getDate() + '.' + currentTime.getFullYear();
 	var postTime = ' @ ' + currentTime.getHours() +':' + currentTime.getMinutes();
 /*----------------------------INITIALIZATION FUNCTIONS----------------------------*/
 
@@ -62,12 +62,18 @@ $(document).on('ready', function() {
 				postDOMElement.find('.date').text(postObject.postTime);
 			}
 
-console.log("Post ID", postObject.id);
+// console.log("Post ID", postObject.id);
 
 			postDOMElement.attr('data-post-id', postObject.id);
 
+
+// console.log(postDOMElement.find('.img-post-user').attr('src'));
+			postDOMElement.find('.img-post-user').attr('src', postObject.author.image);
 			postDOMElement.find('.post-author').text(postObject.postAuthor);
 			postDOMElement.find('.post-text').text(postObject.content);
+			
+// console.log(postObject);
+
 
 // console.log("Add Media: list", addMediaPost.find('alter-media-list'));
 			if (postObject.facebook) {
@@ -155,7 +161,15 @@ console.log("FILTER");
 // console.log('showInstagram', showInstagram);
 // console.log(postObject);
 
-		return ((postObject.facebook === showFacebook) || (postObject.twitter === showTwitter) || (postObject.instagram === showInstagram));
+			if (showFacebook && (postObject.facebook === showFacebook)){
+				return postObject;
+			}
+			else if (showTwitter && (postObject.twitter === showTwitter)) {
+				return postObject;
+			}
+			else if (showInstagram && (postObject.instagram === showInstagram)) {
+				return postObject;
+			}
 		});
 	};
 
@@ -173,6 +187,13 @@ console.log("FILTER");
 		var feed = $('#feed');
 		feed.empty();
 
+			if ((!($('.media-filter')).hasClass('highlight') && !$('#btn-all').hasClass('highlight'))) {
+
+console.log("resfj;alkdfadf;lksad");
+		$('#btn-all').addClass('highlight');
+	}
+
+
 // console.log(filterPosts());
 
 		var renderedPostsArray = filterPosts().map(function (postObject) {
@@ -181,6 +202,9 @@ console.log("FILTER");
 
 
 console.log("RENDER");
+
+
+
 	};
 
 	renderFeed();
@@ -302,7 +326,7 @@ console.log(postDate + postTime);
 		var tags = $('.tag-post').val() || null;
 
 		var tempPost = {
-			postTime: (postDate + postTime),
+			postTime: 'Vibed: ' + (postDate + postTime),
 			id: newID,
 			author: currentUser,
 			postAuthor: null,
@@ -353,18 +377,18 @@ console.log(postDate + postTime);
 
 		nthis.toggleClass('highlight');
 
+
 		if (nthis.hasClass('icon')) {
 			$('.media-filter').removeClass('highlight');
-
-			if (!allIconsButton.hasClass('highlight')) {
-				allIconsButton.addClass('highlight');
-			}
 		}
+
 		else {
 			allIconsButton.removeClass('highlight');
 		}
 		renderFeed();
 	});
+
+
 
 
 
@@ -381,46 +405,44 @@ console.log(postDate + postTime);
 
 
 
-$(document).on('click', '.to-media', function (e) {
-	e.stopPropagation();
-	$(this).toggleClass('highlight');
+	$(document).on('click', '.to-media', function (e) {
+		e.stopPropagation();
+		$(this).toggleClass('highlight');
 
-	console.log("highlight");
-});
-
-
-
-
-
-$(document).on('click', '.re-vibe', function (e) {
-	e.stopPropagation();
-	var nthis = $(this);
-
-	var postID = nthis.parent().closest('.post').attr('data-post-id');
-
-console.log("Returned Post ID", postID);
-
-
-	var highlightedElements = "";
-	var selectedMedia = nthis.closest('ul').find('i.highlight');
-
-console.log("selectedMedia", selectedMedia);
-
-
-
-	var reVibedPost = _.find(postsArray, function (postObject) {
-
-console.log("Object ID from postsArray", postObject.id);
-
-
-		return postObject.id == postID;
+		console.log("highlight");
 	});
 
 
 
 
 
-console.log("Pushed this", nthis);
+	$(document).on('click', '.re-vibe', function (e) {
+		e.stopPropagation();
+		var nthis = $(this);
+
+		var postID = nthis.parent().closest('.post').attr('data-post-id');
+
+	// console.log("Returned Post ID", postID);
+
+
+		var highlightedElements = "";
+		var selectedMedia = nthis.closest('ul').find('i.highlight');
+
+	// console.log("selectedMedia", selectedMedia);
+
+
+		var reVibedPost = _.find(postsArray, function (postObject) {
+
+	// console.log("Object ID from postsArray", postObject.id);
+
+			return postObject.id == postID;
+	});
+
+
+
+
+
+// console.log("Pushed this", nthis);
 
 	selectedMedia.map(function(index, domElement) {
 
