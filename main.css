@@ -230,7 +230,7 @@
 }
 
 .carousel-item-1 {
-	background-image: url("./attachments/IMG_2438.JPG");
+	background-image: url("../attachments/IMG_2438.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -242,7 +242,7 @@
 }
 
 .carousel-item-2 {
-	background-image: url("./attachments/IMG_2439.JPG");
+	background-image: url("../attachments/IMG_2439.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -254,7 +254,7 @@
 }
 
 .carousel-item-3 {
-	background-image: url("./attachments/IMG_2440.JPG");
+	background-image: url("../attachments/IMG_2440.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
@@ -265,7 +265,7 @@
 	background-color: rgba(150, 50, 50, .5);
 }
 .carousel-item-4 {
-	background-image: url("./attachments/IMG_2443.JPG");
+	background-image: url("../attachments/IMG_2443.JPG");
 	background-repeat: no-repeat;
 	background-size: 100%;
 }

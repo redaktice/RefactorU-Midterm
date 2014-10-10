@@ -17,7 +17,7 @@ $(document).on('ready', function() {
 /*-------------------------GLOBAL VARIABLES------------------------*/
 
 
-var defaultImage = "./attachments/IMG_2440.JPG"; //'http://placehold.it/150x150';
+var defaultImage = "../attachments/IMG_2440.JPG"; //'http://placehold.it/150x150';
 
 
 
@@ -144,8 +144,7 @@ console.log("confirmedUser", confirmedUser);
 			color: '#000',
 			age: inputAge,
 
-			// Image from http://commons.wikimedia.org/wiki/Earth#mediaviewer/File:EarthRender.png by user Tesseract2
-			img: defaultImage, //"http://commons.wikimedia.org/wiki/Earth#mediaviewer/File:EarthRender.png",
+			img: defaultImage,
 			bool: false,
 			username: inputUsername,
 			password: inputPassword
